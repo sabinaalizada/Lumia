@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Lumia.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
