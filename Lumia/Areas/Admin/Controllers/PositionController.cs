@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Lumia.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class PositionController : Controller
     {
         private readonly DataContext _dataContext;
