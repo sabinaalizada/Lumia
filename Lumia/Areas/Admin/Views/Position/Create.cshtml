@@ -1,0 +1,19 @@
+﻿@model Position
+
+
+<div class="container">
+    <div class="justify-content-center">
+        Create Position
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3 col-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a class="btn btn-primary" asp-action="index" asp-controller="position">Cancel</a>
+    </form>
+
+</div>

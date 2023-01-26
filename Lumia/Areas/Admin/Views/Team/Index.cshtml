@@ -1,0 +1,84 @@
+﻿@model PaginatedList<Team>
+@{
+    int count = 0;
+}
+
+<div class="container" style="justify-content:center">
+    <div class="container" style="justify-content:start">
+        <h1>
+            Teams
+        </h1>
+        <div class="container" style="justify-content:start">
+            <a class="btn btn-primary" asp-action="create" asp-controller="team" >Create</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <th scope="row">@count</th>
+                        <td>@item.Name</td>
+                        <td>@item.Position.Name</td>
+                        <td>
+
+                            <div style="width:100px">
+                                <img style="max-width:100%" src="~/uploads/teams/@item.ImageUrl">
+                            </div>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="update" asp-controller="team" asp-route-id="@item.Id" data-id="@item.Id">Update</a>
+                        <a class="btn btn-danger" asp-action="delete" asp-controller="team" asp-route-id="@item.Id" data-id="@item.Id">Delete</a>
+
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<div class="container">
+    <nav aria-label="...">
+        <ul class="pagination">
+            @if (Model.Previous)
+            {
+                <li class="page-item ">
+                    <a asp-action="index" class="page-link" asp-route-page="@(Model.ActivePage-1)">Previous</a>
+                </li>
+            }
+            @for (int i = 1; i <= Model.TotalPageCount; i++)
+            {
+                <li class="page-item @(Model.ActivePage==i?"active":"")" aria-current="page">
+                    <a asp-action="index" class="page-link" asp-route-page="@i">@i</a>
+                </li>
+            }
+            @if (Model.Next)
+            {
+                <li class="page-item ">
+                    <a asp-action="index" class="page-link" asp-route-page="@(Model.ActivePage+1)">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+

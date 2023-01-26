@@ -1,0 +1,49 @@
+﻿@model Team
+
+
+<div class="container">
+    <div class="justify-content-center">
+        Create Update
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3 col-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="mb-3 col-3">
+            <label asp-for="Insta" class="form-label">Insta</label>
+            <input asp-for="Insta" class="form-control">
+        </div>
+        <div class="mb-3 col-3">
+            <label asp-for="Face" class="form-label">Face</label>
+            <input asp-for="Face" class="form-control">
+        </div>
+        <div class="mb-3 col-3">
+            <label asp-for="Twitter" class="form-label">Twitter</label>
+            <input asp-for="Twitter" class="form-control">
+        </div>
+        <div class="mb-3 col-3">
+            <label asp-for="formFile" class="form-label">formFile</label>
+            <input asp-for="formFile" class="form-control">
+            <span asp-validation-for="formFile"></span>
+        </div>
+        <div class="mb-3 col-3">
+
+            <label asp-for="PositionId" class="form-label">PositionId</label>
+            <select class="form-select" asp-for="PositionId" asp-items="@(new SelectList(ViewBag.Posi,"Id","Name"))">
+            </select>
+            <span asp-validation-for="PositionId"></span>
+        </div>
+
+        <div class="form-floating mb-3 col-3">
+            <textarea asp-for="Desc" class="form-control" placeholder="Desc">Desc</textarea>
+            <label asp-for="Desc">Desc</label>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-primary" asp-action="index" asp-controller="team">Cancel</a>
+    </form>
+
+</div>
