@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Lumia.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class TeamController : Controller
     {
         private readonly DataContext _dataContext;
