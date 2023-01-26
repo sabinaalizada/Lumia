@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Lumia.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Super Admin")]
 
     public class AdminController : Controller
     {
